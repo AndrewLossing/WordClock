@@ -371,7 +371,7 @@ HeartTrigger  = [[10,5], [2,14],  [8,6]]
 # current month for testing
 #HeartMonth.append([datetime.datetime.now().month, datetime.datetime.now().day])
 
-CakeTrigger   = [[10, 5], [11,29], [7,6]]
+CakeTrigger   = [[10, 5], [11,29], [7,6], [10,3]]
 # current day for testing
 #CakeTrigger.append([datetime.datetime.now().month, datetime.datetime.now().day]) # current month for testing
 

@@ -185,7 +185,7 @@ def WordTime(strip):
     if RunType == 'Live':
         display_time = datetime.datetime.now()
     else:
-        display_time = datetime.datetime.now().replace(hour = iter_count // 60, minute = iter_count % 60, second = 0, , microsecond = 0)
+        display_time = datetime.datetime.now().replace(hour = iter_count // 60, minute = iter_count % 60, second = 0, microsecond = 0)
         iter_count += 1
 
     cur_minutes = display_time.minute

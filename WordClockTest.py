@@ -365,7 +365,7 @@ def Cake(strip, duration_sec = 55, flicker_rate = 1/10):
 #Cake(strip, 30)
 
 #Choose what to display based on time and date
-#Heart to run if anniversary, Allie's birthday, or Valentine's
+#Heart to run if anniversary, birthday, or Valentine's
 
 HeartTrigger  = [[10,5], [2,14],  [8,6]]
 # current month for testing

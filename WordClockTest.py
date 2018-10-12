@@ -386,12 +386,10 @@ def KeepinTime(strip_param):
     global RunType
     next_call = next_call - datetime.timedelta(minutes=next_call.minute % 1 - 1, seconds = next_call.second, microseconds = next_call.microsecond)
 
-    if [datetime.datetime.now().month, datetime.datetime.now().day] in HeartTrigger
-        and next_call.minute % 5 == 4:
+    if [datetime.datetime.now().month, datetime.datetime.now().day] in HeartTrigger and next_call.minute % 5 == 4:
             Heart(strip_param, red)
 
-    elif [datetime.datetime.now().month, datetime.datetime.now().day] in CakeTrigger
-        and next_call.minute % 5 == 3:
+    elif [datetime.datetime.now().month, datetime.datetime.now().day] in CakeTrigger and next_call.minute % 5 == 3:
             Cake(strip_param, 30)
 
 

@@ -396,7 +396,7 @@ def KeepinTime(strip_param):
 
 
     WordTime(strip_param)
-    LightLEDs(strip, list_time_LED, TimeColorCycle[next_call.minute % len(TimeColorCycle)])
+    LightLEDs(strip, list_time_LED, red) # TimeColorCycle[next_call.minute % len(TimeColorCycle)])
 
     if RunType == 'Live':
         SecToNextCall = time.mktime(next_call.timetuple()) + next_call.microsecond / 1E6 - time.time()

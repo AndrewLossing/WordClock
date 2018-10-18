@@ -160,6 +160,7 @@ def LightLEDs(strip, LED_list, color_list, extinguish_first=1):
 
     if windows == 0:
         strip.show()
+    else:
         print 'lit LEDs'
         print ReturnLitLEDs(strip)
 
@@ -187,13 +188,13 @@ def WordTime(strip):
     global list_time_LED
     global iter_count
     global RunType
-    print 'wordtime start'
 
     if RunType == 'Live':
         display_time = datetime.datetime.now()
     else:
         display_time = datetime.datetime.now().replace(hour=iter_count // 60, minute=iter_count % 60, second=0, microsecond=0)
         iter_count += 1
+        print 'wordtime start'
 
     cur_minutes = display_time.minute
     min_displayed = cur_minutes % 5
@@ -232,9 +233,9 @@ def WordTime(strip):
     if min_displayed > 0:
         for i in range(1, min_displayed+1):
             list_time_LED.append(subminute_dict[i])
-
-    print 'sorted list'
-    print sorted(list_time_LED)
+    if windows != 0:
+        print 'sorted list'
+        print sorted(list_time_LED)
 
 
 def wheel(pos):
@@ -277,7 +278,8 @@ if windows == 0:
     TimeColorCycle = [white, red, green]
 
 def Heart(strip, HeartColor, wait_sec=0.5):
-    print 'heart start'
+    if windows != 0:
+        print 'heart start'
     counter = 0
     filled = False
     list_heart_LED = []
@@ -309,7 +311,8 @@ def Heart(strip, HeartColor, wait_sec=0.5):
         counter += 1
 
 def Cake(strip, duration_sec=55, flicker_rate=1/10):
-    print 'cakestart'
+    if windows != 0:
+        print 'cakestart'
     list_cake_LED = []
     counter = 0
     cake_spans = [[10, 17], [26, 37], [46, 57], [66, 77], [86, 97], [110, 111]]
@@ -371,13 +374,13 @@ def Cake(strip, duration_sec=55, flicker_rate=1/10):
 # Choose what to display based on time and date
 # Heart to run if anniversary, birthday, or Valentine's
 
-HeartTrigger  = [[10,5], [2,14],  [8,6]]
+HeartTrigger = [[10, 5], [2, 14],  [8, 6]]
 # current month for testing
-HeartTrigger.append([datetime.datetime.now().month, datetime.datetime.now().day])
+# HeartTrigger.append([datetime.datetime.now().month, datetime.datetime.now().day])
 
-CakeTrigger   = [[10, 5], [11,29], [7,6], [10,3]]
+CakeTrigger = [[10, 5], [11, 29], [7, 6], [10, 3]]
 # current day for testing
-CakeTrigger.append([datetime.datetime.now().month, datetime.datetime.now().day]) # current month for testing
+# CakeTrigger.append([datetime.datetime.now().month, datetime.datetime.now().day]) # current month for testing
 
 
 def KeepinTime(strip_param):
@@ -398,11 +401,10 @@ def KeepinTime(strip_param):
 
     if RunType == 'Live':
         SecToNextCall = time.mktime(next_call.timetuple()) + next_call.microsecond / 1E6 - time.time()
-        print datetime.datetime.now()
-        print SecToNextCall
     else:
         SecToNextCall = 0.25
-
+        print datetime.datetime.now()
+        print SecToNextCall
     threading.Timer( SecToNextCall, KeepinTime, [strip]).start()
 
 RunType = 'Live'
